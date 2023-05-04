@@ -21,11 +21,15 @@
                 element.href = "https://sx-b2c.segurosfalabella.com/VIDA_ASESORADO_CO/login";
             });
         }
+        try {
+            let run = {key: 'dniCo', value: '10'}
+            let iframe = document.getElementById('sox');
+            iframe.addEventListener('load',()=>{
+                iframe.contentWindow.postMessage(run,'https://alexanderpadron.github.io')
+            })
+        } catch (error) {
+            console.log('Existe algun tipo de error aqui',error)
+        }
         
-        let run = {key: 'dniCo', value: '10'}
-        let iframe = document.getElementById('sox');
-        iframe.addEventListener('load',()=>{
-            iframe.contentWindow.postMessage(run,'https://alexanderpadron.github.io')
-        })
     </script>
 </html>
