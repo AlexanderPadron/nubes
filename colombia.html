@@ -15,7 +15,6 @@
                navigator.userAgent.indexOf('CriOS') == -1 &&
                navigator.userAgent.indexOf('FxiOS') == -1;
 	if(!isSafari && navigator.userAgent.match(/iPhone/i)) isSafari = true
-				
         console.log({isSafari})
         if(isSafari){
             let theLinks = document.querySelectorAll('.product-banner--info-container a');
