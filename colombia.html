@@ -13,7 +13,8 @@
         let isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
                navigator.userAgent &&
                navigator.userAgent.indexOf('CriOS') == -1 &&
-               navigator.userAgent.indexOf('FxiOS') == -1;
+               navigator.userAgent.indexOf('FxiOS') == -1
+				|| navigator.userAgent.match(/iPhone/i);
         console.log({isSafari})
         if(isSafari){
             let theLinks = document.querySelectorAll('.product-banner--info-container a');
