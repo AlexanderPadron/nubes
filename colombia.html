@@ -34,9 +34,15 @@
 	    
         window.addEventListener('message', function(event) {
   		if(event.origin === 'https://sx-b2c.segurosfalabella.com') {
-			console.log('Mensaje recibido desde el iframe:', event.data.message);
+			let bandera = false
 			for(const info of event.data.message) {
-				console.log('la info', info)
+				if(!bandera && info.jwtToken_VIDA_ASESORADO_CO) bandera = true
+			}
+			if(!bandera) {
+				let theLinks = document.querySelectorAll('.product-banner--info-container a');
+				theLinks.forEach(function (element, index) {
+					element.href = "https://sx-b2c.segurosfalabella.com/VIDA_ASESORADO_CO/login";
+				});
 			}
 		}
 	});
