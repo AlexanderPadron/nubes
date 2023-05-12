@@ -31,6 +31,11 @@
         } catch (error) {
             console.log('Existe algun tipo de error aqui',error)
         }
-        
+	    
+        window.addEventListener('message', function(event) {
+  		if(event.origin === 'https://sx-b2c.segurosfalabella.com') {
+			console.log('Mensaje recibido desde el iframe:', event.data);
+		}
+	});
     </script>
 </html>
