@@ -36,12 +36,14 @@
 	    for(var i = 0; i < event.data.message.length; i++) {
 	      if(!bandera && event.data.message[i].jwtToken_VIDA_ASESORADO_CO) bandera = true
 	    }
-	    if(bandera) {
+	    if(!isSafari && bandera) {
 	      console.log('MS', 'el token se creo procedemos a cambiar la url')
 	      theLinks2.forEach(function (element, index) {
 		console.log('MS', 'Aqui esta', element)
 		element.href = "https://sx-b2c.segurosfalabella.com/VIDA_ASESORADO_CO/pos/flow/VIDA/7";
 	      });
+	    } else {
+	    	document.write('Al parecer es safari o iphone, pasaremos por las nubes')
 	    }
 	  }
 	})
