@@ -10,17 +10,18 @@
     <iframe src="https://sx-b2c.segurosfalabella.com/ligth_CO.html" id="sox" frameborder="0" width="0" height="0"></iframe>
     </body>
     <script>
+	document.write('El navegador detectado es: ' + navigator.userAgent);
         var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
                navigator.userAgent &&
                navigator.userAgent.indexOf('CriOS') == -1 &&
                navigator.userAgent.indexOf('FxiOS') == -1;
 	var theLinks = document.querySelectorAll('.product-banner--info-container a');
 	var theLinks2 = document.querySelectorAll('.product-banner--info-container a');
+	console.log('MS isSafari', isSafari)
 	if(!isSafari && navigator.userAgent.match(/iPhone/i)) {
 	  console.log('MS', 'detectamos iphone')
 	  isSafari = true
 	}
-	isSafari = !isSafari
 	if(!isSafari){
 	  console.log('MS', 'no es safari, buscamos setear la url')
 	    theLinks.forEach(function (element, index) {
