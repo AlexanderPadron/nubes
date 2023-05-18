@@ -18,7 +18,7 @@
 	var theLinks = document.querySelectorAll('.product-banner--info-container a');
 	var theLinks2 = document.querySelectorAll('.product-banner--info-container a');
 	console.log('MS isSafari', isSafari)
-	if(!isSafari && navigator.userAgent.match(/iPhone/i)) {
+	if(!isSafari && (navigator.userAgent.match(/iPhone/i) && navigator.userAgent.match(/Firefox/i))) {
 	  console.log('MS', 'detectamos iphone')
 	  isSafari = true
 	}
