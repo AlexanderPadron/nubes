@@ -16,7 +16,7 @@
   navigator.userAgent &&
   navigator.userAgent.indexOf("CriOS") == -1 &&
   navigator.userAgent.indexOf("FxiOS") == -1;
-
+var inject = false;
 console.log("MS soportado", notSupport);
 if (
   !notSupport &&
@@ -63,8 +63,11 @@ function changeUrl(context) {
 	boton.addEventListener("click", ejecutarMetodo);
 
 	// Agrega el campo de entrada de texto y el botón al elemento <div>
-	miDiv.appendChild(inputTexto);
-	miDiv.appendChild(boton);
+	  if(!inject){
+		inject = true;
+		miDiv.appendChild(inputTexto);
+		miDiv.appendChild(boton);  
+	  }
   }
   var theLinks = document.querySelectorAll(".product-banner--info-container a");
   theLinks.forEach(function (element, index) {
