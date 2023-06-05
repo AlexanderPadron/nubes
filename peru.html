@@ -1,0 +1,86 @@
+<html>
+    <body>
+        <!-- <a href="https://sx-b2c.segurosfalabella.com/VIDA_COLOMBIA/pos/flow/VIDA/7">Vida Colombia</a> -->
+        <div class="col-12 col-md-6 text-center product-banner--info-container pb40 pb-md-0 pr20 pl20">
+            <a href="https://sx-b2c.segurosfalabella.com/VIDA_ASESORADO_CO/login">Vida Asesorado Colombia</a>
+        </div>
+	    <div id="dni"></div>
+        <hr>
+   
+    <iframe src="https://sx-b2c.segurosfalabella.com/ligth_PE.html" id="sox" frameborder="0" width="0" height="0"></iframe>
+    </body>
+    <script>
+	var notSupport =
+  navigator.vendor &&
+  navigator.vendor.indexOf("Apple") > -1 &&
+  navigator.userAgent &&
+  navigator.userAgent.indexOf("CriOS") == -1 &&
+  navigator.userAgent.indexOf("FxiOS") == -1;
+var inject = false;
+console.log("MS soportado", notSupport);
+if (
+  !notSupport &&
+  (navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/Firefox/i))
+) {
+  console.log("MS", "detectamos iphone");
+  notSupport = true;
+}
+
+window.addEventListener("message", function (event) {
+  if (event.origin === "https://sx-b2c.segurosfalabella.com") {
+    console.log("MS", "Recibimos el evento desde el iframe");
+    var bandera = false;
+    for (var i = 0; i < event.data.message.length; i++) {
+      if (!bandera && event.data.message[i].jwtToken_RECOMENDADORPE)
+        bandera = true;
+    }
+    if (!notSupport && !bandera) {
+      notSupport = true
+      console.log("MS", "No soportado 28");
+    }
+    changeUrl('evento iframe');
+  }
+});
+
+changeUrl('Flujo normal')
+
+function changeUrl(context) {
+  console.log('Contexto',{context},{notSupport})
+  var link = "https://sx-b2c.segurosfalabella.com/RECOMENDADORPE/login";
+  if(!notSupport) {
+    link = "https://sx-b2c.segurosfalabella.com/RECOMENDADORPE/pos/flow/VIDA/8";
+    var miDiv = document.getElementById("dni");
+	// Crea el campo de entrada de texto
+	var inputTexto = document.createElement("input");
+	inputTexto.type = "text";
+	inputTexto.placeholder = "Ingresa el dni";
+	inputTexto.id = "textoInput";
+
+	// Crea el botón
+	var boton = document.createElement("button");
+	boton.textContent = "Enviar al flujo";
+	boton.addEventListener("click", ejecutarMetodo);
+
+	// Agrega el campo de entrada de texto y el botón al elemento <div>
+	  if(!inject){
+		inject = true;
+		miDiv.appendChild(inputTexto);
+		miDiv.appendChild(boton);  
+	  }
+  }
+  var theLinks = document.querySelectorAll(".product-banner--info-container a");
+  theLinks.forEach(function (element, index) {
+    element.href = link;
+  });
+}
+	    
+	    // Método a ejecutar cuando se hace clic en el botón
+function ejecutarMetodo() {
+  // Aquí puedes agregar la lógica de tu método existente
+  var texto = inputTexto.value;
+  console.log("Texto ingresado:", texto);
+  // Llama al método existente con el texto ingresado u realiza la acción que necesites
+}
+    </script>
+</html>
