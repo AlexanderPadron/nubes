@@ -7,7 +7,7 @@
 	    <div id="dni"></div>
         <hr>
    
-    <iframe src="https://sx-b2c-dev.segurosfalabella.com/devchilevida.html" id="sox" frameborder="0" width="0" height="0"></iframe>
+    <iframe src="https://sx-b2c-dev.segurosfalabella.com/devchilevida-testvida.html" id="sox" frameborder="0" width="0" height="0"></iframe>
     </body>
     <script>
 	var notSupport =
@@ -54,19 +54,19 @@ function changeUrl(context) {
 	// Crea el campo de entrada de texto
 	var inputTexto = document.createElement("input");
 	inputTexto.type = "text";
-	inputTexto.placeholder = "Ingresa el dni";
+	inputTexto.placeholder = "11111111-8";
 	inputTexto.id = "textoInput";
 
 	// Crea el botón
-	var boton = document.createElement("button");
-	boton.textContent = "Enviar al flujo";
-	boton.addEventListener("click", ejecutarMetodo);
+	//var boton = document.createElement("button");
+	//boton.textContent = "Enviar al flujo";
+	//boton.addEventListener("click", ejecutarMetodo);
 
 	// Agrega el campo de entrada de texto y el botón al elemento <div>
 	  if(!inject){
 		inject = true;
 		miDiv.appendChild(inputTexto);
-		miDiv.appendChild(boton);  
+		//miDiv.appendChild(boton);  
 	  }
   }
   var theLinks = document.querySelectorAll(".product-banner--info-container a");
