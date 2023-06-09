@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falabella</title>
+</head>
+<body>
+    <div id="contenido">
+
+    </div>
+</body>
+<script type="application/javascript">
+    const responses = []
+    const devChile = 'https://as-b2b-dev-8so6.ase-smartixsecondary-dev-cma8.p.azurewebsites.net/api/Authentication/LoginAnonymous/TestVIDA';
+    fetch(devChile)
+    .then(response => response.json())
+    .then(json => {
+      sessionStorage.setItem("jwtToken_VIDA_CHILE", json.data.token);
+      sessionStorage.setItem("globalskin_VIDA_CHILE", JSON.stringify(json.data.skin));
+    })
+    .finally( () => {
+        responses.push({
+            jwtToken_VIDA_CHILE: sessionStorage.getItem('jwtToken_VIDA_CHILE'),
+            globalskin_VIDA_CHILE: sessionStorage.getItem('globalskin_VIDA_CHILE')
+        })
+    })
+    .catch(err => console.log('Solicitud fallida', err));
+
+    window.addEventListener("dni", function (event) {
+        if (event.source === parent) {
+            console.log("MS", "Recibimos el evento desde el padre");
+            sessionStorage.setItem("dni",event.message.dni)
+        }
+    });
+
+    setTimeout(() => {
+        console.log('Subimos el mensaje',responses);
+        window.parent.postMessage({ message: responses }, '*');
+    }, 2000);
+</script>
+</html>
