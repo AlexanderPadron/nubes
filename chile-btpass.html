@@ -29,17 +29,9 @@ if (
 }
 var miDiv = document.getElementById("dni");
 window.addEventListener("message", function (event) {
-  if (event.origin === "https://sx-b2c.segurosfalabella.com") {
+  if (event.origin === "https://sx-b2c-dev.segurosfalabella.com") {
     console.log("MS", "Recibimos el evento desde el iframe");
-    var bandera = false;
-    for (var i = 0; i < event.data.message.length; i++) {
-      if (!bandera && event.data.message[i].jwtToken_RECOMENDADORPE)
-        bandera = true;
-    }
-    if (!notSupport && !bandera) {
-      notSupport = true
-      console.log("MS", "No soportado 28");
-    }
+    notSupport = false;
     changeUrl('evento iframe');
   }else{
     console.log('Evento bloqueado')
