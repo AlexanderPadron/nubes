@@ -30,7 +30,7 @@ if (
 var miDiv = document.getElementById("dni");
 window.addEventListener("message", function (event) {
   if (event.origin === "https://sx-b2c-dev.segurosfalabella.com") {
-    console.log("MS", "Recibimos el evento desde el iframe");
+    console.log("MS", "Recibimos el evento desde el iframe", event.data);
     notSupport = false;
     changeUrl('evento iframe');
   }else{
