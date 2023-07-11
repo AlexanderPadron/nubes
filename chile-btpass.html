@@ -30,9 +30,13 @@ if (
 var miDiv = document.getElementById("dni");
 window.addEventListener("message", function (event) {
   if (event.origin === "https://sx-b2c-dev.segurosfalabella.com") {
-    console.log("MS", "Recibimos el evento desde el iframe", event.data);
-    notSupport = false;
-    changeUrl('evento iframe');
+    if(event.data.message.token){
+	window.location.href = link;
+    } else {
+	console.log("MS", "Recibimos el evento desde el iframe", event.data);
+    	notSupport = false;
+    	changeUrl('evento iframe');
+    }
   }else{
     console.log('Evento bloqueado')
   }
@@ -75,8 +79,6 @@ function ejecutarMetodo() {
     var dni = document.getElementById("textoInput").value;
     var win = window.frames.sox;
     win.postMessage({ dni }, '*');
-    window.location.href = link;
-
   // Llama al método existente con el texto ingresado u realiza la acción que necesites
 }
     </script>
