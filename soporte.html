@@ -1,0 +1,18 @@
+<script>
+  let notSuport;
+  function isSupported() {
+      const isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+        navigator.userAgent &&
+        navigator.userAgent.indexOf('CriOS') == -1 &&
+        navigator.userAgent.indexOf('FxiOS') == -1;
+      
+      notSuport = isSafari;
+      if (notSuport) return;
+    
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) || navigator.platform('iPhone')) {
+        console.log('Device iphone');
+        notSuport = true;
+      }
+  isSupported();
+  document.write(notSuport);
+</script>
